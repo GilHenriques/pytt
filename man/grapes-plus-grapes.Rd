@@ -18,6 +18,6 @@ A character vector of the concatenated values.
 A binary version of the \code{\link[base]{paste0}} function.
 }
 \examples{
-'I am ' \%+\% 31 \%+\% 'years old.'
+'I am ' \%+\% 31 \%+\% ' years old.'
 
 }

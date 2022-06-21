@@ -9,7 +9,7 @@
 #' @export
 #'
 #' @examples
-#' 'I am ' %+% 31 %+% 'years old.'
+#' 'I am ' %+% 31 %+% ' years old.'
 #'
 `%+%` <- function(a, b) {
   paste0(a, b)
