@@ -39,7 +39,7 @@ devtools::install_github("GilHenriques/pytt")
 ### Binary operators
 
 The package includes a series of binary operators that manipulate strings. 
-These are wrappers around the base functions `paste0()`, `grepl()` and `substr()`:
+These are wrappers around the base functions `paste0()`, `grepl()`, and `substr()`:
 
 ```{r example, echo=TRUE}
 library(pytt)
