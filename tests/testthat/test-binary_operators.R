@@ -15,3 +15,8 @@ test_that("binary left/right operator works", {
   expect_equal(x %left% 4, c("Abba", "123", "ABBA"))
   expect_equal(x %right% 1, c("a", "3", "!"))
 })
+
+test_that("not-in works", {
+  expect_equal(c('text', 'vec') %notin% c('ice-cream', 'world', 'text'),
+               c(FALSE, TRUE))
+})

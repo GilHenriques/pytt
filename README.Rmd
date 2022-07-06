@@ -55,3 +55,12 @@ c('Pytt i panna', 'Pyttipanna') %like% '\\s'
 pytt_i_panna %left% 6
 pytt_i_panna %right% 2
 ```
+
+Some binary operators are not specific to strings:
+
+```{r example2, echo=TRUE}
+library(pytt)
+
+# Negated %in% operator:
+1:3 %!in% 3:5
+```

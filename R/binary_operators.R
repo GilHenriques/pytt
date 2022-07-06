@@ -38,6 +38,7 @@
   grepl(pattern, vector)
 }
 
+
 #' Binary operator to extract the first or last few characters of a string
 #'
 #' Extracts the leftmost (`%left%`) or rightmost (`%right%`) few characters
@@ -62,3 +63,31 @@
 `%right%` <- function(vector, nr_chars) {
   substr(vector, nchar(vector)-(nr_chars-1), nchar(vector))
 }
+
+#' Negated `%in%` operator
+#'
+#' Returns the logical negation of the binary \code{\link[base]{match}}.
+#' Aliases: `%!in%` and `%not_in`.
+#'
+#' @param x Vector or `NULL`: the values to be matched
+#' @param vector Vector or `NULL`: the values to be matched against
+#'
+#' @return A logical vector of the same length as `x`; returns `TRUE` when the
+#' element of `x` is absent from `vector` and `FALSE` when the element of `x` is
+#' present in `vector`.
+#' @export
+#'
+#' @examples
+#' c('text', 'vec') %notin% c('ice-cream', 'world', 'text')
+#'
+`%notin%` <- function(x, vector){
+  !(x %in% vector)
+}
+
+#' @rdname grapes-notin-grapes
+#' @export
+`%!in%` <- `%notin%`
+
+#' @rdname grapes-notin-grapes
+#' @export
+`%not_in%` <- `%notin%`

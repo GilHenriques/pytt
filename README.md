@@ -49,3 +49,13 @@ pytt_i_panna %left% 6
 pytt_i_panna %right% 2
 #> [1] "na"
 ```
+
+Some binary operators are not specific to strings:
+
+``` r
+library(pytt)
+
+# Negated %in% operator:
+1:3 %!in% 3:5
+#> [1]  TRUE  TRUE FALSE
+```
