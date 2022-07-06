@@ -1,5 +1,5 @@
 test_that("binary paste operator works", {
-  expect_equal('I am ' %+% 31 %+% ' years old',
+  expect_equal('I am ' %_% 31 %_% ' years old',
                paste0('I am ', 31, ' years old'))
 })
 

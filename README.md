@@ -36,7 +36,7 @@ library(pytt)
 
 # Paste operator (`paste0`):
 pytt_i_panna <- 'pytt i panna'
-'Pyttipanna is also called ' %+% pytt_i_panna
+'Pyttipanna is also called ' %_% pytt_i_panna
 #> [1] "Pyttipanna is also called pytt i panna"
 
 # Pattern-matching operator (`grepl`):
