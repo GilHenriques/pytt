@@ -59,3 +59,13 @@ library(pytt)
 1:3 %!in% 3:5
 #> [1]  TRUE  TRUE FALSE
 ```
+
+Other functions include:
+
+``` r
+library(pytt)
+
+# Standard error:
+se(1:5)
+#> [1] 0.7071068
+```
