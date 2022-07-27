@@ -39,19 +39,19 @@ devtools::install_github("GilHenriques/pytt")
 ### Binary operators
 
 The package includes a series of binary operators that manipulate strings. 
-These are wrappers around the base functions `paste0`, `grepl`, and `substr`:
+These are wrappers around the base functions `paste`, `grepl`, and `substr`:
 
 ```{r example, echo=TRUE}
 library(pytt)
 
-# Paste operator (`paste0`):
+# Paste operators: %_%, %__%, %._%, %,_%, %:_% (`paste`):
 pytt_i_panna <- 'pytt i panna'
-'Pyttipanna is also called ' %_% pytt_i_panna
+'Pytti' %_% 'panna is also called' %__% pytt_i_panna %._% 'It is a dish from Sweden' %,_% 'Denmark, and other countries.'
 
-# Pattern-matching operator (`grepl`):
+# Pattern-matching operator: %like% (`grepl`):
 c('Pytt i panna', 'Pyttipanna') %like% '\\s'
 
-# Substring (first or last few characters) operator (`substr`):
+# Substring (first or last few characters) operators: %left%, %right% (`substr`):
 pytt_i_panna %left% 6
 pytt_i_panna %right% 2
 ```

@@ -1,6 +1,22 @@
 #' Binary paste operator
 #'
-#' A binary version of the \code{\link[base]{paste0}} function.
+#' A binary version of the \code{\link[base]{paste}} function. Concatenates
+#' vectors after converting to character.
+#'
+#' @details `%_%` concatenates arguments without a separator, similar to
+#'\code{\link[base]{paste0}}.
+#'
+#'`%__%` (with two underscores) separates the arguments with a space, similar
+#'to `paste(..., sep = ' ')`.
+#'
+#'`%,_%` separates the arguments with a comma followed by a space, similar to
+#'`paste(..., sep = ', ')`.
+#'
+#'`%._%` separates the arguments with a period followed by a space, similar to
+#'`paste(..., sep = '. ')`.
+#'
+#'`%:_%` separates the arguments with a colon followed by a space, similar to
+#'`paste(..., sep = ': ')`.
 #'
 #' @param a An \code{R} object, to be converted to a character vector
 #' @param b An \code{R} object, to be converted to a character vector
@@ -9,12 +25,35 @@
 #' @export
 #'
 #' @examples
-#' 'I am ' %_% 31 %_% ' years old.'
+#' 'I am' %__% 31 %_% ' years old.'
 #'
 `%_%` <- function(a, b) {
   paste0(a, b)
 }
 
+#' @rdname grapes-_-grapes
+#' @export
+`%__%` <- function(a, b) {
+  paste(a, b, sep = ' ')
+}
+
+#' @rdname grapes-_-grapes
+#' @export
+`%._%` <- function(a, b) {
+  paste(a, b, sep = '. ')
+}
+
+#' @rdname grapes-_-grapes
+#' @export
+`%,_%` <- function(a, b) {
+  paste(a, b, sep = ', ')
+}
+
+#' @rdname grapes-_-grapes
+#' @export
+`%:_%` <- function(a, b) {
+  paste(a, b, sep = ': ')
+}
 
 #' Binary pattern-matching operator
 #'

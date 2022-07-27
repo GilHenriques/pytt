@@ -2,9 +2,21 @@
 % Please edit documentation in R/binary_operators.R
 \name{\%_\%}
 \alias{\%_\%}
+\alias{\%__\%}
+\alias{\%._\%}
+\alias{\%,_\%}
+\alias{\%:_\%}
 \title{Binary paste operator}
 \usage{
 a \%_\% b
+
+a \%__\% b
+
+a \%._\% b
+
+a \%,_\% b
+
+a \%:_\% b
 }
 \arguments{
 \item{a}{An \code{R} object, to be converted to a character vector}
@@ -15,9 +27,26 @@ a \%_\% b
 A character vector of the concatenated values.
 }
 \description{
-A binary version of the \code{\link[base]{paste0}} function.
+A binary version of the \code{\link[base]{paste}} function. Concatenates
+vectors after converting to character.
+}
+\details{
+\verb{\%_\%} concatenates arguments without a separator, similar to
+\code{\link[base]{paste0}}.
+
+\verb{\%__\%} (with two underscores) separates the arguments with a space, similar
+to \code{paste(..., sep = ' ')}.
+
+\verb{\%,_\%} separates the arguments with a comma followed by a space, similar to
+\code{paste(..., sep = ', ')}.
+
+\verb{\%._\%} separates the arguments with a period followed by a space, similar to
+\code{paste(..., sep = '. ')}.
+
+\verb{\%:_\%} separates the arguments with a colon followed by a space, similar to
+\code{paste(..., sep = ': ')}.
 }
 \examples{
-'I am ' \%_\% 31 \%_\% ' years old.'
+'I am' \%__\% 31 \%_\% ' years old.'
 
 }
