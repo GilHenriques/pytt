@@ -27,12 +27,12 @@ a \%:_\% b
 A character vector of the concatenated values.
 }
 \description{
-A binary version of the \code{\link[base]{paste}} function. Concatenates
+A binary version of the \code{\link[base:paste]{base::paste()}} function. Concatenates
 vectors after converting to character.
 }
 \details{
 \verb{\%_\%} concatenates arguments without a separator, similar to
-\code{\link[base]{paste0}}.
+\code{\link[base:paste]{base::paste0()}}.
 
 \verb{\%__\%} (with two underscores) separates the arguments with a space, similar
 to \code{paste(..., sep = ' ')}.

@@ -23,7 +23,7 @@ element of \code{x} is absent from \code{vector} and \code{FALSE} when the eleme
 present in \code{vector}.
 }
 \description{
-Returns the logical negation of the binary \code{\link[base]{match}}.
+Returns the logical negation of the binary \code{\link[base:match]{base::match()}}.
 Aliases: \verb{\%!in\%} and \verb{\%not_in}.
 }
 \examples{

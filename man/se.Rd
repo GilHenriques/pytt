@@ -17,7 +17,7 @@ values before the computation proceeds (this behavior is the opposite of
 base R functions).
 }
 \details{
-Like \code{\link[stats]{var}} this uses denominator $n-1$.
+Like \code{\link[stats:cor]{stats::var()}} this uses denominator $n-1$.
 The standard error of a length-one or zero-length vector is \code{NA}.
 }
 \examples{

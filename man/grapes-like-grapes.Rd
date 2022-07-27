@@ -17,7 +17,7 @@ can be coerced by \code{as.character} to a character vector.}
 A logical vector (match or not for each element of \code{vector}).
 }
 \description{
-A binary version of the \code{\link[base]{grepl}} function.
+A binary version of the \code{\link[base:grep]{base::grepl()}} function.
 Determines if a character string matches a specified pattern.
 Similar to SQL's \code{LIKE} operator, but uses \link[base]{regular expression}
 syntax instead of SQL's wildcard characters * and \%.

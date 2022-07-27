@@ -36,40 +36,14 @@ devtools::install_github("GilHenriques/pytt")
 
 ## Functions included in `{pytt}`
 
-### Binary operators
+- A series of binary concatenation operators: 
+  - `%_%` for pasting without separator
+  - `%__%` for pasting with a space separator
+  - `%,_%`, `%._%`, and `%:_%` for separating with a comma/dot/colon followed by a space
+- An SQL-style binary pattern-matching operator: `%like%`
+- Binary operators to extract the first or last few characters of a string: `%left%` and `%right%`
+- A negated `%in%`operator: `%!in%`
+- A standard error function: `se()`
+- A timer: `tic()` and `toc()` (includes support for multiple timers and nested timers)
+- A progress bar: `progress_bar_start(repeats = ...)` and `progress_bar_tick()`. Optionally, a sound may be played when the progress bar is finished.
 
-The package includes a series of binary operators that manipulate strings. 
-These are wrappers around the base functions `paste`, `grepl`, and `substr`:
-
-```{r example, echo=TRUE}
-library(pytt)
-
-# Paste operators: %_%, %__%, %._%, %,_%, %:_% (`paste`):
-pytt_i_panna <- 'pytt i panna'
-'Pytti' %_% 'panna is also called' %__% pytt_i_panna %._% 'It is a dish from Sweden' %,_% 'Denmark, and other countries.'
-
-# Pattern-matching operator: %like% (`grepl`):
-c('Pytt i panna', 'Pyttipanna') %like% '\\s'
-
-# Substring (first or last few characters) operators: %left%, %right% (`substr`):
-pytt_i_panna %left% 6
-pytt_i_panna %right% 2
-```
-
-Some binary operators are not specific to strings:
-
-```{r example2, echo=TRUE}
-library(pytt)
-
-# Negated %in% operator:
-1:3 %!in% 3:5
-```
-
-Other functions include:
-
-```{r example3, echo=TRUE}
-library(pytt)
-
-# Standard error:
-se(1:5)
-```

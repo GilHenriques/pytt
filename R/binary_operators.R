@@ -1,10 +1,10 @@
 #' Binary paste operator
 #'
-#' A binary version of the \code{\link[base]{paste}} function. Concatenates
+#' A binary version of the [base::paste()] function. Concatenates
 #' vectors after converting to character.
 #'
 #' @details `%_%` concatenates arguments without a separator, similar to
-#'\code{\link[base]{paste0}}.
+#'[base::paste0()].
 #'
 #'`%__%` (with two underscores) separates the arguments with a space, similar
 #'to `paste(..., sep = ' ')`.
@@ -57,7 +57,7 @@
 
 #' Binary pattern-matching operator
 #'
-#' A binary version of the \code{\link[base]{grepl}} function.
+#' A binary version of the [base::grepl()] function.
 #' Determines if a character string matches a specified pattern.
 #' Similar to SQL's `LIKE` operator, but uses \link[base]{regular expression}
 #' syntax instead of SQL's wildcard characters * and %.
@@ -105,7 +105,7 @@
 
 #' Negated `%in%` operator
 #'
-#' Returns the logical negation of the binary \code{\link[base]{match}}.
+#' Returns the logical negation of the binary [base::match()].
 #' Aliases: `%!in%` and `%not_in`.
 #'
 #' @param x Vector or `NULL`: the values to be matched
