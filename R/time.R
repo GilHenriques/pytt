@@ -47,7 +47,7 @@ toc <- function(name = 'timer') {
     stop('The `name` argument in toc() does not match the `name` of any existing timers. Initiate a timer with tic().')
   }
   duration <- Sys.time() - eval(parse(text = '.pytt_env$' %_% name))
-  print(sprintf('%s: Time difference of %.2f %s', name, duration, units(duration)))
+  message(sprintf('%s: Time difference of %.4f %s', name, duration, units(duration)))
 }
 
 #' Make a simple progress bar in the terminal
