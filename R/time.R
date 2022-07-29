@@ -92,3 +92,68 @@ progress_bar_tick <- function(beep = FALSE) {
   .pytt_env$pb$tick()
   if (beep && .pytt_env$pb$finished) beepr::beep(sound = 3)
 }
+
+
+
+#' Evaluate an expression multiple times in parallel
+#'
+#' Evaluates an expression in parallel, in multiple background R processes.
+#' Alias: parallelise.
+#'
+#' @details Uses \code{\link[future]{plan}} from the `future` package to launch several background R processes, running on different processor cores on the same machine.
+#' Uses \code{\link[doFuture]{registerDoFuture}} from the `doFuture` package and \code{\link[foreach]{foreach}} from the `foreach` package for the actual parallelization.
+#' Uses \code{\link[doRNG]{%dorng%}} from the `doRNG` package to generate different random numbers in each repetition.
+#'
+#' Note for users who have set a `future` strategy or registered a backend prior to calling `parallelize`: while this function sets its own `future` strategy and `foreach` backend, it restores the user's settings on exit.
+#'
+#' @param repeats Integer number of times to evaluate the expression
+#' @param expr `R` expression to evaluate
+#' @param workers Integer number of processor cores to use. Maximum: number of processor cores on the system minus 1. If no value is provided, or if the value provided exceeds the maximum, defaults to the maximum.
+#' @param seed A single value, interpreted as an integer,.
+#'
+#' @importFrom parallel detectCores
+#' @importFrom doFuture registerDoFuture
+#' @importFrom foreach setDoPar foreach `%dopar%`
+#' @importFrom future plan
+#' @importFrom doRNG `%dorng%`
+#' @importFrom stats runif
+#'
+#' @export
+#'
+#' @examples
+#' parallelize(repeats = 2, expr = rnorm(100), workers = 3, seed = 1)
+#'
+parallelize <- function(repeats, expr, workers, seed) {
+
+  # Before calling the function, the user might have set a future strategy or registered a foreach backend. We don't want to break their setup, so we will save the user's settings and re-set them on exit
+  old_plan <- future::plan(NULL)
+  old_backend <- doFuture::registerDoFuture()
+  on.exit(with(old_backend, foreach::setDoPar(fun = fun, data = data, info = info)), add = TRUE)
+  on.exit(future::plan(old_plan), add = TRUE)
+
+  max_workers <- parallel::detectCores() - 1
+  if (missing(workers)) { workers <- max_workers
+  } else if (workers > max_workers) {
+    workers <- max_workers
+    message('The value of `workers` exceeds the maximum value (number of processor cores in the system minus 1). Coercing to the maximum value.')
+  } else if (!is.numeric(workers) || workers %% 1 != 0) {
+    stop('The value of `workers` must be an integer.')
+  }
+
+  if(missing(seed)) seed <- runif(1, 0, 1e6)
+
+  doFuture::registerDoFuture()
+  future::plan('multisession', workers = workers)
+  # Forked processing ('multicore') is not supported when running R from RStudio because it is considered unstable, so we will use 'multisession'
+
+  output <- do.call(`%dorng%`, list(substitute(foreach::foreach(1:repeats, .options.RNG = seed)), substitute(expr)))
+
+  # We don't want to print the random number sequence used by doRNG to generate random numbers...
+  attr(output, 'rng') <- NULL; attr(output, 'doRNG_version') <- NULL
+
+  return(output)
+}
+
+#' @rdname parallelize
+#' @export
+parallelise <- parallelize
