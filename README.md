@@ -38,5 +38,7 @@ devtools::install_github("GilHenriques/pytt")
 -   A timer: `tic()` and `toc()` (includes support for multiple timers
     and nested timers)
 -   A progress bar: `progress_bar_start(repeats = ...)` and
-    `progress_bar_tick()`. Optionally, a sound may be played when the
-    progress bar is finished.
+    `progress_bar_tick()`; optionally, a sound may be played when the
+    progress bar is finished
+-   A function analogous to `replicate()`, but parallelized:
+    `parallelize()`
