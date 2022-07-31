@@ -30,13 +30,13 @@ test_that("future strategy goes back to default", {
   future::plan('sequential')
 })
 
-# test_that("future throws appropriate errors or messages", {
-#   expect_error(parallelize(repeats = 3,  expr = rnorm(1), workers = '4'),
-#                'must be an integer')
-#
-#   expect_message(parallelize(repeats = 3,  expr = rnorm(1), workers = 100),
-#                  'maximum value')
-# })
+test_that("future throws appropriate errors or messages", {
+  # expect_error(parallelize(repeats = 3,  expr = rnorm(1), workers = '4'),
+  #              'must be an integer')
+
+  expect_message(parallelize(repeats = 3,  expr = rnorm(1), workers = 100),
+                 'maximum value')
+})
 
 test_that("future outputs different/equal random numbers when expected to", {
   two_rand_nrs <- parallelize(repeats = 2, expr = rnorm(1), workers = 1)
