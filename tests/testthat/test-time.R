@@ -31,8 +31,8 @@ test_that("future strategy goes back to default", {
 })
 
 test_that("future throws appropriate errors or messages", {
-  # expect_error(parallelize(repeats = 3,  expr = rnorm(1), workers = '4'),
-  #              'must be an integer')
+  expect_error(parallelize(repeats = 3,  expr = rnorm(1), workers = 'x'),
+                'must be an integer')
 
   expect_message(parallelize(repeats = 3,  expr = rnorm(1), workers = 100),
                  'maximum value')

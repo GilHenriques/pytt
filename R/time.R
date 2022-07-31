@@ -133,11 +133,11 @@ parallelize <- function(repeats, expr, workers, seed) {
 
   max_workers <- parallel::detectCores() - 1
   if (missing(workers)) { workers <- max_workers
+  } else if (!is.numeric(workers) || workers %% 1 != 0) {
+    stop('The value of `workers` must be an integer.')
   } else if (workers > max_workers) {
     workers <- max_workers
     message('The value of `workers` exceeds the maximum value (number of processor cores in the system minus 1). Coercing to the maximum value.')
-  } else if (!is.numeric(workers) || workers %% 1 != 0) {
-    stop('The value of `workers` must be an integer.')
   }
 
   if(missing(seed)) seed <- runif(1, 0, 1e6)
