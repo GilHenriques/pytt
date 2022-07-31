@@ -30,6 +30,6 @@ Uses \code{\link[doRNG]{\%dorng\%}} from the \code{doRNG} package to generate di
 Note for users who have set a \code{future} strategy or registered a backend prior to calling \code{parallelize}: while this function sets its own \code{future} strategy and \code{foreach} backend, it restores the user's settings on exit.
 }
 \examples{
-# example here
+parallelize(repeats = 2, expr = rnorm(100), workers = 3, seed = 1)
 
 }
